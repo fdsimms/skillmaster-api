@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -19,6 +20,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy!
+    render :show
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -33,9 +40,10 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(
       :nickname,
       :password,
+      :session_token,
+      :bio,
       :fname,
       :lname,
-      :hometown,
       :email,
       :points
     )
