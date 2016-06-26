@@ -49,8 +49,11 @@ export default class LoginView extends Component {
           placeholder='Password'
           onChangeText={(text) => this.setState({ password: text })}
         />
-        <TouchableHighlight onPress={this.onLoginPress.bind(this)}>
-          <Text>Submit</Text>
+        <TouchableHighlight
+          onPress={this.onLoginPress.bind(this)}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Submit</Text>
         </TouchableHighlight>
         {this.state.showProgress &&
           <ActivityIndicatorIOS
@@ -82,5 +85,19 @@ const styles = StyleSheet.create({
     marginTop: 5,
     borderColor: '#DDD',
     padding: 4
+  },
+  button: {
+    height: 50,
+    borderWidth: 1,
+    marginTop: 4,
+    backgroundColor: '#48BBEC',
+    padding: 4,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#FFF',
+    alignSelf: 'center'
   }
 });
