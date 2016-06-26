@@ -7,6 +7,8 @@ import {
   ActivityIndicatorIOS
 } from 'react-native';
 
+import { find } from 'lodash';
+
 import styles from './stylesheet';
 
 export default class LoginView extends Component {
@@ -18,6 +20,35 @@ export default class LoginView extends Component {
 
   onLoginPress() {
     this.setState({ showProgress: true });
+
+    fetch('http://localhost:3000/api/users', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'X-CSRF-token': this.getCSRFToken(),
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nickname: this.state.nickname,
+        fname: this.state.fname,
+        lname: this.state.lname,
+        password: this.state.password,
+        email: this.state.email,
+      })
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .finally(() => {
+        this.setState({ showProgress: false });
+      });
+  }
+
+  getCSRFToken() {
+    return find(document.getElementsByTagName('meta'), (meta) => {
+      return meta.name === 'csrf-token';
+    }).content;
   }
 
   render() {
