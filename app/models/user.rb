@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by_username(username)
+  def self.find_by_credentials(email, password)
+    user = User.find_by_email(email)
     return nil unless user
     return user.correct_password?(password) ? user : nil
   end
