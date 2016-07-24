@@ -26,13 +26,6 @@ class Api::SessionsController < ApplicationController
   def omniauth_facebook
     @user = User.find_or_create_by_auth_hash(auth_hash)
     log_in!(@user)
-    redirect_to root_url + '#/'
-  end
-
-  def omniauth_google
-    @user = User.find_or_create_by_auth_hash(auth_hash)
-    log_in!(@user)
-    redirect_to root_url + '#/'
   end
 
   def destroy
