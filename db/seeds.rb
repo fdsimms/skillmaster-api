@@ -18,3 +18,11 @@ jacob_francis = User.create({
 
 Sport.destroy_all
 soccer = Sport.create({name: "soccer"})
+
+Skill.destroy_all
+dribbling = Skill.create({name: "Dribbling", sport_id: soccer.id})
+penalties = Skill.create({name: "Penalties", sport_id: soccer.id})
+passing = Skill.create({name: "Passing", sport_id: soccer.id})
+dribbling2 = Skill.create({name: "Dribbling 2", sport_id: soccer.id})
+passing2 = Skill.create({name: "Passing 2", sport_id: soccer.id})
+hat_tricks = Skill.create({name: "Hat Tricks", sport_id: soccer.id})
