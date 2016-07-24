@@ -3,7 +3,6 @@ class Api::SportsController < ApplicationController
     @sport = Sport.new(sport_params)
 
     if @sport.save
-      log_in!(@sport)
       render :show
     else
       render json: @sport.errors.full_messages, status: 422
