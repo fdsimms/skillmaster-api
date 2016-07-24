@@ -15,13 +15,11 @@ class User < ActiveRecord::Base
     return user if user
 
     user = User.create!(
-      email: SecureRandom::urlsafe_base64(12),
+      email: auth_hash[:info][:email],
       lname: auth_hash[:info][:last_name],
       fname: auth_hash[:info][:first_name],
-      profile_pic: auth_hash[:info][:image],
       provider: provider,
       uid: uid,
-      username: SecureRandom::urlsafe_base64(12),
       password: SecureRandom::urlsafe_base64(12)
     )
 
