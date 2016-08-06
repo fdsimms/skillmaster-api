@@ -29,7 +29,7 @@ class Api::SkillsController < ApplicationController
   end
 
   def index
-    @skill = Skill.all
+    @skills = Skill.all
   end
 
   private
