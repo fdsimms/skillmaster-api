@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update]
     resource :session, only: [:create, :destroy, :show]
     resources :sports, only: [:index, :show, :create, :update]
-    resources :skills, only: [:index, :show, :create, :update]
+    resources :skills, only: [:index, :show, :create, :update] do
+      resources :lessons, only: [:index, :show, :create, :update]
+    end
   end
 end
