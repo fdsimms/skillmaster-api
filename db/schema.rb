@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828183016) do
+ActiveRecord::Schema.define(version: 20161011031640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,23 +47,25 @@ ActiveRecord::Schema.define(version: 20160828183016) do
   add_index "sports", ["name"], name: "index_sports_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "nickname",                    null: false
-    t.string   "password_digest",             null: false
-    t.string   "fname",                       null: false
-    t.string   "lname",                       null: false
-    t.string   "email",                       null: false
-    t.integer  "points",          default: 0, null: false
-    t.string   "session_token",               null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["nickname"], name: "index_users_on_nickname", using: :btree
-  add_index "users", ["password_digest"], name: "index_users_on_password_digest", using: :btree
-  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
-  add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
