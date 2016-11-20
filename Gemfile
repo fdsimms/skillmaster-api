@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook', '~> 3.0.0'
 gem 'figaro', '~> 1.1.1'
 gem 'devise', '~> 4.1'
+gem 'devise_token_auth', '~> 0.1.39'
+gem 'omniauth', '~> 1.3'
 
 group :development, :test do
   gem 'byebug'
