@@ -1,28 +1,19 @@
-== README
+= Skillmaster API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== Summary
 
-Things you may want to cover:
+This is the API for the Skillmaster app. It's a pretty standard restful Rails 4 API.
 
-* Ruby version
+== Getting started
 
-* System dependencies
+All you need to do to start development is your usual Rails commands—`rails s` starts the server, and `rails c` opens the Rails console.
 
-* Configuration
+=== Auth
 
-* Database creation
+Skillmaster uses the Devise gem to handle auth. For now it is a pretty simple auth solution, but it's extensible should new features be desired later on (email verifications and so on).
 
-* Database initialization
+=== Deployment
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pushing code to master on Github will automatically deploy a new build to the Heroku instance.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
